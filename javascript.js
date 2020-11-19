@@ -57,6 +57,8 @@ form.onsubmit = event => {
 
 if (window.onhashchange())
     form.onsubmit()
+else
+    details.open = true
 
 var browseEexamples = category => {
     displayProgressBar()
