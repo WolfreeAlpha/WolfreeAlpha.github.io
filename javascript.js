@@ -61,21 +61,17 @@ if (window.onhashchange())
 var browseEexamples = category => {
     displayProgressBar()
     fetch(
-        `${corsProxy}https://www.wolframalpha.com/examples/pro-features/step-by-step-solutions/step-by-step-${category}`
+        `${corsProxy}https://www4c.wolframalpha.com/examples/StepByStep${category.replace(/ /g, '')}-content.html`
     ).then(
         html => html.text()
     ).then(
-        html => container.innerHTML = html.replace(/.*examples-subpage-body../s, '')
-                                          .replace(/subpage-footer-section.*/s, '')
-                                          .replace(/.input..../g, 'http://wolfreealpha.github.io/#')
-                                          .replace(/\+/g, ' ')
-                                          .replace(/&amp;..../g, '')
-                                          .replace(/aside/g, 'aside hidden')
-                                          .replace(/More examples/g, '')
-                                          .replace(/svg /g, '')
+        html => container.innerHTML = html.replace(/.input.*?&amp;lk=3/g, href => href
+                                          .replace(/.input..../, 'http://wolfreealpha.github.io#')
+                                          .replace(/&amp;lk=3/, '')
+                                          .replace(/\+/g, ' '))
     )
 }
 
 document.querySelectorAll('.example').forEach(example =>
-    example.href = `javascript:browseEexamples( '${example.innerText.trim()}' )`
+    example.href = `javascript:browseEexamples( '${example.innerText}' )`
 )
