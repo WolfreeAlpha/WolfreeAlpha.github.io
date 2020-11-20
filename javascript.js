@@ -14,6 +14,7 @@ var appid =
 'KQRKKJ-8WHPY395HA',
 'AAT4HU-Q3RETTGY93',
 '7JKH84-T648HW2UV9',
+'WYEQU3-2T55JP3WUG',
 ]
 
 var corsProxy = 'https://lin2jing4-cors.herokuapp.com/'
@@ -58,8 +59,6 @@ form.onsubmit = event => {
 
 if (window.onhashchange())
     form.onsubmit()
-else
-    details.open = true
 
 var browseEexamples = category => {
     displayProgressBar()
