@@ -1,6 +1,6 @@
 'use strict'
 
-var appid =
+const appid =
 [
 '26LQEH-YT3P6T3YY9',
 'K49A6Y-4REWHGRWW6',
@@ -18,16 +18,16 @@ var appid =
 'T2XT8W-57PJW3L433',
 ]
 
-var corsProxy = 'https://lin2jing4-cors.herokuapp.com/'
+const corsProxy = 'https://lin2jing4-cors.herokuapp.com/'
 
-var displayProgressBar = _ =>
+const displayProgressBar = _ =>
     container.insertAdjacentHTML('afterbegin', 'Processing, please wait. <progress>')
 
-var fixedEncodeURIComponent = str => 
+const fixedEncodeURIComponent = str => 
     encodeURIComponent(str)
     .replace(/[-_.!~*'()]/g, char => '%' + char.charCodeAt(0).toString(16))
 
-var url = _ =>
+const url = _ =>
 `
 ${corsProxy}
 http://api.wolframalpha.com/v2/query?
@@ -61,7 +61,7 @@ form.onsubmit = event => {
 if (window.onhashchange())
     form.onsubmit()
 
-var browseEexamples = category => {
+const browseEexamples = category => {
     displayProgressBar()
     fetch(
         `${corsProxy}https://www4c.wolframalpha.com/examples/StepByStep${category.replace(/ /g, '')}-content.html`
