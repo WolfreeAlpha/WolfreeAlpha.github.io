@@ -20,9 +20,6 @@ const appid =
 
 const corsProxy = 'https://lin2jing4-cors.herokuapp.com/'
 
-const displayProgressBar = _ =>
-    container.insertAdjacentHTML('afterbegin', 'Processing, please wait. <progress>')
-
 const fixedEncodeURIComponent = str => 
     encodeURIComponent(str)
     .replace(/[-_.!~*'()]/g, char => '%' + char.charCodeAt(0).toString(16))
@@ -46,7 +43,7 @@ form.onsubmit = event => {
     details.open = false
     if (event)
         event.preventDefault()
-    displayProgressBar()
+    progress.hidden = false
     fetch(
         url()
     ).then(
@@ -56,13 +53,14 @@ form.onsubmit = event => {
                                         .replace(/<pod title../g, '<h1>')
                                         .replace(/.......scanner/gs, '</h1><!')
     )
+    progress.hidden = true
 }
 
 if (window.onhashchange())
     form.onsubmit()
 
 const browseEexamples = category => {
-    displayProgressBar()
+    progress.hidden = false
     fetch(
         `${corsProxy}https://www4c.wolframalpha.com/examples/StepByStep${category.replace(/ /g, '')}-content.html`
     ).then(
@@ -73,6 +71,7 @@ const browseEexamples = category => {
                                           .replace(/&amp;lk=3/, '')
                                           .replace(/\+/g, ' '))
     )
+    progress.hidden = true
 }
 
 document.querySelectorAll('.example').forEach(example =>
