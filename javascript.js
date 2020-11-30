@@ -69,9 +69,9 @@ document.querySelectorAll('.example').forEach(
             `
             const response = await fetch(url.replace(/ /g, ''))
             const html = await response.text()
-            pod.innerHTML = html.replace(/.input.*?&amp;lk=3/g, href => href
+            pod.innerHTML = html.replace(/".*?"/g, href => href
                                 .replace(/.input..../, '#')
-                                .replace(/&amp;lk=3/, '')
+                                .replace(/&amp;..../, '')
                                 .replace(/\+/g, ' '))
             progressBar.hidden = true
         }
