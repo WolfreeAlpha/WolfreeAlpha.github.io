@@ -24,56 +24,56 @@ const fixedEncodeURIComponent = str =>
     encodeURIComponent(str)
     .replace(/[-_.!~*'()]/g, char => '%' + char.charCodeAt(0).toString(16))
 
-const url = _ =>
-`
-${corsProxy}
-http://api.wolframalpha.com/v2/query?
-&appid=${ appid[Date.now() % appid.length] }
-&input=${ location.hash = fixedEncodeURIComponent(input.value) }
-&podstate=Step-by-step solution
-&podstate=Step-by-step
-&podstate=Show all steps
-&scantimeout=20
-`
-
-window.onhashchange = _ =>
+window.onhashchange = _ => {
+    input.focus()
     input.value = decodeURIComponent(location.hash.slice(1))
+}
 
-form.onsubmit = event => {
+window.onhashchange()
+
+form.onsubmit = async event => {
     details.open = false
     if (event)
         event.preventDefault()
-    progress.hidden = false
-    fetch(
-        url()
-    ).then(
-        xml => xml.text()
-    ).then(
-        xml => container.innerHTML = xml.replace(/plaintext/g, 'pre')
-                                        .replace(/<pod title../g, '<h1>')
-                                        .replace(/.......scanner/gs, '</h1><!')
-    )
-    progress.hidden = true
+    progressBar.hidden = false
+    const url =
+    `
+        ${corsProxy} api.wolframalpha.com/v2/query?
+        &appid = ${appid[Date.now() % appid.length]}
+        &input = ${location.hash = fixedEncodeURIComponent(input.value)}
+        &podstate = Step-by-step+solution
+        &podstate = Step-by-step
+        &podstate = Show+all+steps
+        &scantimeout = 20
+    `
+    const response = await fetch(url.replace(/ /g, ''))
+    const xml = await response.text()
+    pod.innerHTML = xml.replace(/plaintext/g, 'pre')
+                       .replace(/<pod title../g, '<h1>')
+                       .replace(/.......scanner/gs, '</h1><!')
+    progressBar.hidden = true
 }
 
-if (window.onhashchange())
+if (input.value)
     form.onsubmit()
 
-const browseEexamples = category => {
-    progress.hidden = false
-    fetch(
-        `${corsProxy}https://www4c.wolframalpha.com/examples/StepByStep${category.replace(/ /g, '')}-content.html`
-    ).then(
-        html => html.text()
-    ).then(
-        html => container.innerHTML = html.replace(/.input.*?&amp;lk=3/g, href => href
-                                          .replace(/.input..../, 'http://wolfreealpha.github.io#')
-                                          .replace(/&amp;lk=3/, '')
-                                          .replace(/\+/g, ' '))
-    )
-    progress.hidden = true
-}
-
-document.querySelectorAll('.example').forEach(example =>
-    example.href = `javascript:browseEexamples( '${example.innerText}' )`
+document.querySelectorAll('.example').forEach(
+    example => {
+        example.onclick = async event => {
+            event.preventDefault()
+            progressBar.hidden = false
+            const url =
+            `
+                ${corsProxy} wolframalpha.com/examples/
+                StepByStep ${event.target.innerText} -content.html
+            `
+            const response = await fetch(url.replace(/ /g, ''))
+            const html = await response.text()
+            pod.innerHTML = html.replace(/.input.*?&amp;lk=3/g, href => href
+                                .replace(/.input..../, '#')
+                                .replace(/&amp;lk=3/, '')
+                                .replace(/\+/g, ' '))
+            progressBar.hidden = true
+        }
+    }
 )
