@@ -59,6 +59,7 @@ if (input.value)
 
 document.querySelectorAll('.example').forEach(
     example => {
+        example.href = ''
         example.onclick = async event => {
             event.preventDefault()
             progressBar.hidden = false
