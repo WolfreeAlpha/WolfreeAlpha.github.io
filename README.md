@@ -1,4 +1,5 @@
-# Wol[free](https://wolfreealpha.github.io/)Alpha: Free Wolfram|Alpha Step-by-Step Solutions
+# Wol[free](https://wolfreealpha.github.io/)Alpha
+## Free Wolfram|Alpha Step-by-Step Solutions
 - [**Try it now**](https://wolfreealpha.github.io/), it's gratis!
 - Unlock/Receive FREE unlimited access to [Wolfram|Alpha's full Step-by-step solutions](https://www.wolframalpha.com/examples/pro-features/step-by-step-solutions/).
 - Facilitate the use of [Wolfram|Alpha Show Steps API](https://products.wolframalpha.com/show-steps-api/documentation/).
