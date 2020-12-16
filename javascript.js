@@ -25,8 +25,8 @@ const corsProxy = new Date().getDate() > 15
 
 fetch(corsProxy)
 
-const fixedEncodeURI = str => 
-    encodeURIComponent(str)
+const fixedEncodeURI = string => 
+    encodeURIComponent(string)
     .replace(/[-_.!~*'()]/g, char => '%' + char.charCodeAt(0).toString(16))
 
 window.onhashchange = _ => {
