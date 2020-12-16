@@ -21,7 +21,7 @@ const appid =
 
 const corsProxy = 'https://lin2jing4-cors.herokuapp.com/'
 
-const fixedEncodeURIComponent = str => 
+const fixedEncodeURI = str => 
     encodeURIComponent(str)
     .replace(/[-_.!~*'()]/g, char => '%' + char.charCodeAt(0).toString(16))
 
@@ -41,7 +41,7 @@ form.onsubmit = async event => {
     `
         ${corsProxy} api.wolframalpha.com/v2/query?
         &appid = ${appid[Date.now() % appid.length]}
-        &input = ${location.hash = fixedEncodeURIComponent(input.value)}
+        &input = ${location.hash = fixedEncodeURI(input.value)}
         &podstate = Step-by-step+solution
         &podstate = Step-by-step
         &podstate = Show+all+steps
