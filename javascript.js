@@ -41,7 +41,7 @@ form.onsubmit = async event => {
     `
         ${corsProxy} api.wolframalpha.com/v2/query?
         &appid = ${appid[Date.now() % appid.length]}
-        &input = ${location.hash = fixedEncodeURI(input.value)}
+        &input = ${location.hash = fixedEncodeURI(document.title = input.value)}
         &podstate = Step-by-step+solution
         &podstate = Step-by-step
         &podstate = Show+all+steps
