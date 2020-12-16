@@ -63,7 +63,6 @@ document.querySelectorAll('.example').forEach(
         example.href = ''
         example.onclick = async event => {
             event.preventDefault()
-            progressBar.hidden = false
             const url =
             `
                 ${corsProxy} wolframalpha.com/examples/
@@ -75,7 +74,6 @@ document.querySelectorAll('.example').forEach(
                                 .replace(/.input..../, '#')
                                 .replace(/&amp;..../, '')
                                 .replace(/\+/g, ' '))
-            progressBar.hidden = true
         }
     }
 )
