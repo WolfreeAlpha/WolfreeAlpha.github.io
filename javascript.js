@@ -23,8 +23,6 @@ const corsProxy = new Date().getDate() > 15
                 ? 'https://lin2jing4-cors-1.herokuapp.com/'
                 : 'https://lin2jing4-cors-2.herokuapp.com/'
 
-fetch(corsProxy)
-
 const fixedEncodeURI = string => 
     encodeURIComponent(string)
     .replace(/[-_.!~*'()]/g, char => '%' + char.charCodeAt(0).toString(16))
@@ -61,6 +59,8 @@ form.onsubmit = async event => {
 
 if (input.value)
     form.onsubmit()
+else
+    fetch(corsProxy)
 
 document.querySelectorAll('.example').forEach(
     example => {
