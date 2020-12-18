@@ -19,9 +19,7 @@ const appid =
 '2557YT-52JEY65G9K',
 ]
 
-const corsProxy = new Date().getDate() > 15
-                ? 'https://lin2jing4-cors-1.herokuapp.com/'
-                : 'https://lin2jing4-cors-2.herokuapp.com/'
+const corsProxy = `https://lin2jing4-cors-${new Date().getDay()}.herokuapp.com/`
 
 const fixedEncodeURI = string => 
     encodeURIComponent(string)
