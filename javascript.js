@@ -21,6 +21,7 @@ const appid =
 'W85VHP-E6WH3U78EE',
 'W33433-AKRV98E5AT',
 '3A3P8J-XA4UTGKAH5',
+'QGK5UA-HGUK7AP5LY',
 ]
 
 const corsProxy = `https://lin2jing4-cors-${new Date().getDay()}.herokuapp.com/`
