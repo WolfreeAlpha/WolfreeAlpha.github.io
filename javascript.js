@@ -41,9 +41,12 @@ window.onhashchange()
 
 form.onsubmit = async event => {
     details.open = false
+    pod.innerHTML = ""
     if (event)
         event.preventDefault()
-    progressBar.hidden = false
+    content.hidden = false
+    loadingPlaceholder.hidden = false
+    loader.className = "ui active inverted dimmer"
     const url =
     `
         ${corsProxy} api.wolframalpha.com/v2/query?
@@ -59,7 +62,10 @@ form.onsubmit = async event => {
     pod.innerHTML = xml.replace(/plaintext/g, 'pre')
                        .replace(/<pod title../g, '<h1>')
                        .replace(/.......scanner/gs, '</h1><!')
-    progressBar.hidden = true
+    content.hidden = false
+    loadingPlaceholder.hidden = true
+    loader.className = "ui inverted dimmer"
+
 }
 
 if (input.value)
@@ -83,6 +89,7 @@ document.querySelectorAll('.example').forEach(
                                 .replace(/.input..../, '#')
                                 .replace(/&amp;..../, '')
                                 .replace(/\+/g, ' '))
+            content.hidden = false
         }
     }
 )
