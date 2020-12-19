@@ -57,10 +57,15 @@ form.onsubmit = async event => {
     `
     const response = await fetch(url.replace(/ /g, ''))
     const xml = await response.text()
-    pod.innerHTML = xml.replace(/plaintext/g, 'pre')
-        .replace(/<pod title../g, '<h1>')
-        .replace(/.......scanner/gs, '</h1><!')
-    content.hidden = false
+    console.log(xml)
+    pod.innerHTML = xml
+        .replace(/plaintext/g, 'pre')
+        .replace(/<pod title../g, '<div class="ui top header">')
+        .replace(/.......scanner/gs, '</div><!')
+        .replaceAll('<subpod', '<div class="ui top attached segment"')
+        .replaceAll('colorinvertable=\'true\' />', 'colorinvertable="true"></div><div class="ui bottom attached secondary segment" style="padding-top: 0.1em;padding-bottom: 0.1em;overflow:auto;"> ')
+        .replaceAll('</subpod>', '</div>')
+    content.hidden = false;
     loadingPlaceholder.hidden = true
     loader.className = "ui inverted dimmer"
 
@@ -76,11 +81,8 @@ document.querySelectorAll('.example').forEach(
         example.href = ''
         example.onclick = async event => {
             event.preventDefault()
-            const url =
-                `
-                ${corsProxy} wolframalpha.com/examples/
-                StepByStep ${event.target.innerText} -content.html
-            `
+            const url = `${corsProxy} wolframalpha.com/examples/
+                         StepByStep ${event.target.innerText} -content.html`
             const response = await fetch(url.replace(/ /g, ''))
             const html = await response.text()
             pod.innerHTML = html.replace(/".*?"/g, href => href
