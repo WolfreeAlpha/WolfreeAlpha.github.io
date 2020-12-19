@@ -8,33 +8,64 @@
     <meta name="description" content="">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="http://example.com/favicon.png">
+    <link rel="icon" href="https://i.postimg.cc/J0YNHG98/manifold.png">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wolfreealpha.github.io/">
     <meta property="og:title" content="WolfreeAlpha: FREE Wolfram|Alpha Step-by-Step Solutions">
     <meta property="og:description" content="">
-    <meta property="og:image" content="https://www.wolframalpha.com/_next/static/images/headerSmall_14ipXg3E.png">
+    <meta property="og:image" content="https://i.postimg.cc/FR93Pyvm/manifold.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://wolfreealpha.github.io/">
     <meta property="twitter:title" content="WolfreeAlpha: FREE Wolfram|Alpha Step-by-Step Solutions">
     <meta property="twitter:description" content="">
-    <meta property="twitter:image" content="https://www.wolframalpha.com/_next/static/images/headerSmall_14ipXg3E.png">
+    <meta property="twitter:image" content="https://i.postimg.cc/FR93Pyvm/manifold.png">
 
     <!-- SEMANTIC 2.4.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
+    <!-- Desktop/Mobile -->
+    <style>
+
+        @media only screen and (min-width: 1920px) {
+            .atleast-FHD {display: block;}
+            .center {max-width: 50%  !important; 
+                     margin: auto    !important;}}
+        @media only screen and (min-width: 1279px) {
+            .atleast-HD {display: block;}}
+        @media only screen and (max-width: 1279px) {
+            .atleast-HD {display: none;}}
+        @media only screen and (min-width: 1280px) and (max-width: 1920px) {
+            .FHD {display: block;}
+            .HD {display: none;}
+            .MB {display: none;}
+            .center {max-width: 75%  !important; 
+                     margin: auto    !important;}}
+        @media only screen and (min-width: 640px) and (max-width: 1280px) {
+            .FHD {display: none;}
+            .HD {display: block;}
+            .MB {display: none;}
+            .center {max-width: 75%  !important; 
+                     margin: auto    !important;}}
+        @media only screen and (min-width: 0px) and (max-width: 640px){
+            .FHD {display: none;}
+            .HD {display: none;}
+            .MB {display: block;}
+            .center {max-width: 50%  !important; 
+                     margin: auto    !important;}}
+
+    </style>
+
 </head>
 
 <body>
 
-
-    <div class="ui top segment secondary menu" style="max-width: 50%; margin: auto;">
+    <div class="ui top segment secondary menu center">
         <a class="active item" href="">Home</a>
         <a class="item" href="https://github.com/WolfreeAlpha/WolfreeAlpha.github.io"> GitHub </a>
         <div class="ui dropdown segment item">
@@ -53,17 +84,13 @@
                 <a class="example item"> Chemistry              </a>
             </div>
         </div>
-        <p style="max-width: 50%; margin: auto;">Unlock/Receive FREE unlimited access to Wolfram|Alpha's full Step-by-step solutions.</p>
-        <div class="right menu" style="padding-right: 20p;">
-            <div style="color: #212121">
-                <h1> Wol<a href="">free</a>Alpha</h1>
-            </div>
-        </div>
-        <div class="item"><img src="https://www.wolframalpha.com/_next/static/images/headerSmall_14ipXg3E.png"></div>
+        <h4 class="ui right header desktop center atleast-HD">Get access to Wolfram|Alpha Pro features. <br> Unlock full step-by-step solutions for FREE.</h4>
+        <h1 class="ui right item header">Wol<a href="">free</a>Alpha</h1>
+        <div class="item"><img src="https://i.postimg.cc/FR93Pyvm/manifold.png"></div>
     </div><br>
 
 
-    <form id="form" style="max-width: 50%; margin: auto;">
+    <form id="form" class="center">
         <div class="ui fluid action input">
             <input id="input" type="text" placeholder="Enter Expressions" />
             <button class="ui button">Show Step-by-Step Solutions</button>
@@ -71,7 +98,7 @@
     </form><br>
 
 
-    <div class="ui segment" id="content" hidden="true" style="max-width: 50%; margin: auto;">
+    <div class="ui segment center" id="content" hidden="true">
         <div class="ui inverted dimmer" id="loader">
             <div class="ui text loader">Loading</div>
         </div>
@@ -108,12 +135,13 @@
         <div id="pod"> </div>
 
 
-        <script src="javascript.js">
-        </script>
-        <script>
-            $('.ui.dropdown').dropdown();
-        </script>
     </div>
+    
+
+</div>
 </body>
 
+
+<script src="javascript.js"></script>
+<script>$('.ui.dropdown').dropdown();</script>
 </html>
