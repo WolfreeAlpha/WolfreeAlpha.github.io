@@ -35,9 +35,25 @@
     <body style="max-width: 50%; margin: auto;">
         
 
-        <div class="ui top menu">
+        <div class="ui top segment secondary menu">
             <a class="active item" href="">Home</a>
             <a class="item" href="https://github.com/WolfreeAlpha/WolfreeAlpha.github.io"> GitHub </a>
+            <div class="ui dropdown segment item">
+                Examples
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="example item">        Arithmetic             </a>      
+                    <a class="example item">        Algebra                </a>      
+                    <a class="example item">        Geometry               </a>      
+                    <a class="example item">        Statistics             </a>      
+                        <a class="example item"> Calculus               </a>
+                        <a class="example item"> Differential Equations </a>
+                    <a class="example item">        Discrete Math          </a>      
+                    <a class="example item">        Linear Algebra         </a>      
+                    <a class="example item">        Proofs                 </a>      
+                    <a class="example item">        Chemistry              </a>      
+                </div>
+            </div>
             <p style="max-width: 50%; margin: auto;">Unlock/Receive FREE unlimited access to Wolfram|Alpha's full Step-by-step solutions.</p>
             <div class="right menu" style="padding-right: 20p;">
                 <div style="color: #212121"><h1> Wol<a href="">free</a>Alpha</h1></div>
@@ -47,21 +63,6 @@
 
 
         <div style="max-width: 50%; margin: auto;">
-            <details id="details" open>
-                <summary> Examples </summary>
-                <ul>
-                    <li>     <a class="example"> Arithmetic             </a>      </li>
-                    <li>     <a class="example"> Algebra                </a>      </li>
-                    <li>     <a class="example"> Geometry               </a>      </li>
-                    <li>     <a class="example"> Statistics             </a>      </li>
-                    <li> <b> <a class="example"> Calculus               </a> </b> </li>
-                    <li> <b> <a class="example"> Differential Equations </a> </b> </li>
-                    <li>     <a class="example"> Discrete Math          </a>      </li>
-                    <li>     <a class="example"> Linear Algebra         </a>      </li>
-                    <li>     <a class="example"> Proofs                 </a>      </li>
-                    <li>     <a class="example"> Chemistry              </a>      </li>
-                </ul>
-            </details>
             <br><br><br>
         </div>
 
@@ -112,6 +113,9 @@
 
 
         <script src="javascript.js"> </script>
+        <script>
+            $('.ui.dropdown').dropdown();
+        </script>   
     </div>
     </body>
 </html>

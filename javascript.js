@@ -40,7 +40,6 @@ window.onhashchange = _ => {
 window.onhashchange()
 
 form.onsubmit = async event => {
-    details.open = false
     pod.innerHTML = ""
     if (event)
         event.preventDefault()
