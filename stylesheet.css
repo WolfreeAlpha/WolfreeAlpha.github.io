@@ -1,0 +1,33 @@
+body {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+select {
+    padding: .5em
+}
+
+input {
+    box-sizing: border-box;
+    width: 99%;
+    padding: 1em;
+}
+
+.loading {
+    width: 0;
+    height: 0;
+    padding: 2em;
+    border-radius: 3em;
+    border: thick solid silver;
+    border-bottom-color: black;
+    animation: rotate 2s infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(3turn);
+    }
+}
