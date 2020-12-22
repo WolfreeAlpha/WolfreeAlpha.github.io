@@ -38,10 +38,8 @@ window.onhashchange = _ => {
 
 window.onhashchange()
 
-form.onsubmit = async event => {
+const query = async podstate => {
     pod.innerHTML = loading.innerHTML
-    if (event)
-        event.preventDefault()
     const url =
     `
         ${corsProxy} api.wolframalpha.com/v2/query?
@@ -50,6 +48,7 @@ form.onsubmit = async event => {
         &podstate = Step-by-step+solution
         &podstate = Step-by-step
         &podstate = Show+all+steps
+        &podstate = ${podstate.replaceAll(' ', '+')}
         &scantimeout = 20
     `
     const response = await fetch(url.replace(/ /g, ''))
@@ -57,6 +56,20 @@ form.onsubmit = async event => {
     pod.innerHTML = xml.replace(/plaintext/g, 'pre')
                        .replace(/<pod title../g, '<h1>')
                        .replace(/.......scanner/gs, '</h1><!')
+                       .replace(/statelist.*?statelist/gs, statelist => statelist
+                       .replace(/statelist/g, 'select')
+                       .replace(/value../, '><option disabled selected>')
+                       .replace(/.........delimiter/s, '</option><!')
+                       .replace(/<state.name../g, '<option>')
+                       .replace(/..........input/gs, '</option><!'))
+    pod.querySelectorAll('select').forEach(
+        podstate => podstate.onchange = event => query(event.target.value)
+    )
+}
+
+form.onsubmit = async event => {
+    event.preventDefault()
+    query('')
 }
 
 if (input.value)
