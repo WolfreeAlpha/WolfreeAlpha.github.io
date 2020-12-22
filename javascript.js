@@ -27,7 +27,7 @@ const appid = [
 
 const corsProxy = `https://lin2jing4-cors-${new Date().getDay()}.herokuapp.com/`
 
-const fixedEncodeURI = string => 
+const fixedEncodeURI = string =>
     encodeURIComponent(string)
     .replace(/[-_.!~*'()]/g, char => '%' + char.charCodeAt(0).toString(16))
 
@@ -40,54 +40,49 @@ window.onhashchange()
 
 const query = async podstate => {
     pod.innerHTML = loading.innerHTML
-    const url =
-    `
+    const url = `
         ${corsProxy} api.wolframalpha.com/v2/query?
         &appid = ${appid[Date.now() % appid.length]}
         &input = ${location.hash = fixedEncodeURI(document.title = input.value)}
         &podstate = Step-by-step+solution
         &podstate = Step-by-step
         &podstate = Show+all+steps
-        &podstate = ${podstate.replaceAll(' ', '+')}
+        &podstate = ${podstate}
         &scantimeout = 20
     `
     const response = await fetch(url.replace(/ /g, ''))
     const xml = await response.text()
-    pod.innerHTML = xml.replace(/plaintext/g, 'pre')
-                       .replace(/<pod title../g, '<h1>')
-                       .replace(/.......scanner/gs, '</h1><!')
-                       .replace(/statelist.*?statelist/gs, statelist => statelist
-                       .replace(/statelist/g, 'select')
-                       .replace(/value../, '><option disabled selected>')
-                       .replace(/.........delimiter/s, '</option><!')
-                       .replace(/<state.name../g, '<option>')
-                       .replace(/..........input/gs, '</option><!'))
-    pod.querySelectorAll('select').forEach(
-        podstate => podstate.onchange = event => query(event.target.value)
-    )
+    pod.innerHTML = xml
+        .replaceAll('plaintext', 'pre')
+        .replaceAll('statelist', 'select')
+        .replaceAll('state', 'option')
+        .replaceAll('info', 'div')
+    pod.querySelectorAll('options > option').forEach(node => node.remove())
+    pod.querySelectorAll('option').forEach(node => node.text = node.getAttribute('name'))
+    pod.querySelectorAll('pod').forEach(node => node.innerHTML = `<h1>${node.title}</h1>` + node.innerHTML)
+    pod.querySelectorAll('pod').forEach(node => node.onchange = event => query(event.target.value.replaceAll(' ', '+')))
+    pod.querySelectorAll('select').forEach(node => node.value = node.getAttribute('value'))
 }
 
 form.onsubmit = async event => {
     event.preventDefault()
-    query('')
+    query()
 }
 
-if (input.value)
-    form.onsubmit()
-else
-    fetch(corsProxy)
+if (input.value) query()
+else fetch(corsProxy)
 
 select.onchange = async _ => {
-    const url =
-    `
+    const url = `
         ${corsProxy} wolframalpha.com/examples/
         StepByStep ${select.value} -content.html
     `
-    const response = await fetch(url.replace(/ /g, ''))
+    const response = await fetch(url.replaceAll(' ', ''))
     const html = await response.text()
-    pod.innerHTML = html.replace(/".*?"/g, href => href
-                        .replace(/.input..../, '#')
-                        .replace(/&amp;..../, '')
-                        .replace(/\+/g, ' '))
+    pod.innerHTML = html
+        .replaceAll(/".*?"/g, href => href
+        .replaceAll('/input/?i=', '#')
+        .replaceAll('&amp;lk=3', '')
+        .replaceAll('+', ' '))
     select.value = 'Examples'
 }
