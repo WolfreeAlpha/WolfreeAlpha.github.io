@@ -39,7 +39,7 @@ window.onhashchange = _ => {
 window.onhashchange()
 
 const query = async podstate => {
-    pod.innerHTML = loading.innerHTML
+    pods.innerHTML = loading.innerHTML
     const url = `
         ${corsProxy} api.wolframalpha.com/v2/query?
         &appid = ${appid[Date.now() % appid.length]}
@@ -52,16 +52,16 @@ const query = async podstate => {
     `
     const response = await fetch(url.replace(/ /g, ''))
     const xml = await response.text()
-    pod.innerHTML = xml
+    pods.innerHTML = xml
         .replaceAll('plaintext', 'pre')
         .replaceAll('statelist', 'select')
         .replaceAll('state', 'option')
         .replaceAll('info', 'div')
-    pod.querySelectorAll('options > option').forEach(node => node.remove())
-    pod.querySelectorAll('option').forEach(node => node.text = node.getAttribute('name'))
-    pod.querySelectorAll('pod').forEach(node => node.innerHTML = `<h1>${node.title}</h1>` + node.innerHTML)
-    pod.querySelectorAll('pod').forEach(node => node.onchange = event => query(event.target.value.replaceAll(' ', '+')))
-    pod.querySelectorAll('select').forEach(node => node.value = node.getAttribute('value'))
+    pods.querySelectorAll('options > option').forEach(node => node.remove())
+    pods.querySelectorAll('option').forEach(node => node.text = node.getAttribute('name'))
+    pods.querySelectorAll('pod').forEach(node => node.innerHTML = `<h1>${node.title}</h1>` + node.innerHTML)
+    pods.querySelectorAll('pod').forEach(node => node.onchange = event => query(event.target.value.replaceAll(' ', '+')))
+    pods.querySelectorAll('select').forEach(node => node.value = node.getAttribute('value'))
 }
 
 form.onsubmit = async event => {
@@ -72,17 +72,17 @@ form.onsubmit = async event => {
 if (input.value) query()
 else fetch(corsProxy)
 
-select.onchange = async _ => {
+example.onchange = async _ => {
     const url = `
         ${corsProxy} wolframalpha.com/examples/
-        StepByStep ${select.value} -content.html
+        StepByStep ${example.value} -content.html
     `
     const response = await fetch(url.replaceAll(' ', ''))
     const html = await response.text()
-    pod.innerHTML = html
+    pods.innerHTML = html
         .replaceAll(/".*?"/g, href => href
         .replaceAll('/input/?i=', '#')
         .replaceAll('&amp;lk=3', '')
         .replaceAll('+', ' '))
-    select.value = 'Examples'
+    example.value = 'Examples'
 }
