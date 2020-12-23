@@ -54,14 +54,20 @@ const query = async podstate => {
     const xml = await response.text()
     pods.innerHTML = xml
         .replaceAll('plaintext', 'pre')
+        .replaceAll('info', 'div')
+        .replaceAll('states', 'p')
         .replaceAll('statelist', 'select')
         .replaceAll('state', 'option')
-        .replaceAll('info', 'div')
-    pods.querySelectorAll('options > option').forEach(node => node.remove())
-    pods.querySelectorAll('option').forEach(node => node.text = node.getAttribute('name'))
-    pods.querySelectorAll('pod').forEach(node => node.innerHTML = `<h1>${node.title}</h1>` + node.innerHTML)
-    pods.querySelectorAll('pod').forEach(node => node.onchange = event => query(event.target.value.replaceAll(' ', '+')))
-    pods.querySelectorAll('select').forEach(node => node.value = node.getAttribute('value'))
+    pods.querySelectorAll('pod')
+        .forEach(node => node.innerHTML = `<h1>${node.title}</h1>` + node.innerHTML)
+    pods.querySelectorAll('p > option')
+        .forEach(node => node.remove())
+    pods.querySelectorAll('option')
+        .forEach(node => node.text = node.getAttribute('name'))
+    pods.querySelectorAll('select')
+        .forEach(node => node.value = node.getAttribute('value'))
+    pods.querySelectorAll('select')
+        .forEach(node => node.onchange = event => query(event.target.value.replaceAll(' ', '+')))
 }
 
 form.onsubmit = async event => {
@@ -84,5 +90,6 @@ example.onchange = async _ => {
         .replaceAll('/input/?i=', '#')
         .replaceAll('&amp;lk=3', '')
         .replaceAll('+', ' '))
+    pods.querySelector('a').remove()
     example.value = 'Examples'
 }
