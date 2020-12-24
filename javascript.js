@@ -23,6 +23,7 @@ const appid = [
     'QGK5UA-HGUK7AP5LY',
     '8EL8GA-7W6EVYTQ5X',
     'W4TUXQ-GA2H8KUULA',
+    'UGHH75-YPX2RVU4E4',
 ]
 
 const corsProxy = `https://lin2jing4-cors-${new Date().getDay()}.herokuapp.com/`
@@ -50,7 +51,7 @@ const query = async podstate => {
         &podstate = ${podstate}
         &scantimeout = 20
     `
-    const response = await fetch(url.replace(/ /g, ''))
+    const response = await fetch(url.replaceAll(' ', ''))
     const xml = await response.text()
     pods.innerHTML = xml
         .replaceAll('plaintext', 'pre')
@@ -59,7 +60,7 @@ const query = async podstate => {
         .replaceAll('statelist', 'select')
         .replaceAll('state', 'option')
     pods.querySelectorAll('pod')
-        .forEach(node => node.innerHTML = `<h1>${node.title}</h1>` + node.innerHTML)
+        .forEach(node => node.innerHTML = `<h2>${node.title}</h2>` + node.innerHTML)
     pods.querySelectorAll('p > option')
         .forEach(node => node.remove())
     pods.querySelectorAll('option')
