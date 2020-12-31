@@ -23,6 +23,7 @@ const appid = [
     'QGK5UA-HGUK7AP5LY',
     '8EL8GA-7W6EVYTQ5X',
     'W4TUXQ-GA2H8KUULA',
+    'UGHH75-YPX2RVU4E4',
 ]
 
 const corsProxy = `https://lin2jing4-cors-${new Date().getDay()}.herokuapp.com/`
@@ -38,58 +39,60 @@ window.onhashchange = _ => {
 
 window.onhashchange()
 
-form.onsubmit = async event => {
-    pod.innerHTML = ""
-    if (event)
-        event.preventDefault()
-    content.hidden = false
-    loadingPlaceholder.hidden = false
-    loader.className = "ui active inverted dimmer"
-    const url =
-        `
+const query = async podstate => {
+    pods.innerHTML = loading.innerHTML
+    const url = `
         ${corsProxy} api.wolframalpha.com/v2/query?
         &appid = ${appid[Date.now() % appid.length]}
         &input = ${location.hash = fixedEncodeURI(document.title = input.value)}
         &podstate = Step-by-step+solution
         &podstate = Step-by-step
         &podstate = Show+all+steps
+        &podstate = ${podstate}
         &scantimeout = 20
     `
-    const response = await fetch(url.replace(/ /g, ''))
+    const response = await fetch(url.replaceAll(' ', ''))
     const xml = await response.text()
-    console.log(xml)
-    pod.innerHTML = xml
-        .replace(/plaintext/g, 'pre')
-        .replace(/<pod title../g, '<div class="ui top header">')
-        .replace(/.......scanner/gs, '</div><!')
-        .replaceAll('<subpod', '<div class="ui top attached segment"')
-        .replaceAll('colorinvertable=\'true\' />', 'colorinvertable="true"></div><div class="ui bottom attached secondary segment" style="padding-top: 0.1em;padding-bottom: 0.1em;overflow:auto;"> ')
-        .replaceAll('</subpod>', '</div>')
-    content.hidden = false;
-    loadingPlaceholder.hidden = true
-    loader.className = "ui inverted dimmer"
-
+    pods.innerHTML = xml
+        .replaceAll('plaintext', 'pre')
+        .replaceAll('info', 'div')
+        .replaceAll('state', 'meta')
+    pods.querySelectorAll('metas > meta')
+        .forEach(node => node.remove())
+    pods.innerHTML = pods.innerHTML
+        .replaceAll('metas', 'p')
+        .replaceAll('metalist', 'select')
+        .replaceAll('meta', 'option')
+    pods.querySelectorAll('pod')
+        .forEach(node => node.innerHTML = `<h2>${node.title}</h2>` + node.innerHTML)
+    pods.querySelectorAll('option')
+        .forEach(node => node.text = node.getAttribute('name'))
+    pods.querySelectorAll('select')
+        .forEach(node => node.value = node.getAttribute('value'))
+    pods.querySelectorAll('select')
+        .forEach(node => node.onchange = event => query(event.target.value.replaceAll(' ', '+')))
 }
 
-if (input.value)
-    form.onsubmit()
-else
-    fetch(corsProxy)
+form.onsubmit = async event => {
+    event.preventDefault()
+    query()
+}
 
-document.querySelectorAll('.example').forEach(
-    example => {
-        example.href = ''
-        example.onclick = async event => {
-            event.preventDefault()
-            const url = `${corsProxy} wolframalpha.com/examples/
-                         StepByStep ${event.target.innerText} -content.html`
-            const response = await fetch(url.replace(/ /g, ''))
-            const html = await response.text()
-            pod.innerHTML = html.replace(/".*?"/g, href => href
-                .replace(/.input..../, '#')
-                .replace(/&amp;..../, '')
-                .replace(/\+/g, ' '))
-            content.hidden = false
-        }
-    }
-)
+if (input.value) query()
+else fetch(corsProxy)
+
+example.onchange = async _ => {
+    const url = `
+        ${corsProxy} wolframalpha.com/examples/
+        StepByStep ${example.value} -content.html
+    `
+    const response = await fetch(url.replaceAll(' ', ''))
+    const html = await response.text()
+    pods.innerHTML = html
+        .replaceAll(/".*?"/g, href => href
+        .replaceAll('/input/?i=', '#')
+        .replaceAll('&amp;lk=3', '')
+        .replaceAll('+', ' '))
+    pods.querySelector('a').remove()
+    example.value = 'Examples'
+}
