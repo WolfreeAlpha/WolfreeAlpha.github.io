@@ -49,7 +49,11 @@ const query = async podstate => {
         &podstate = Step-by-step
         &podstate = Show+all+steps
         &podstate = ${podstate}
-        &scantimeout = 20
+        &scantimeout = 999
+        &podtimeout = 999
+        &formattimeout = 999
+        &parsetimeout = 999
+        &totaltimeout = 999
     `
     const response = await fetch(url.replaceAll(' ', ''))
     const xml = await response.text()
