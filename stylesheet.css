@@ -28,7 +28,7 @@ input {
     border-radius: 3em;
     border: thick solid silver;
     border-bottom-color: black;
-    animation: rotate 2s infinite;
+    animation: rotate 3s infinite;
 }
 
 @keyframes rotate {
