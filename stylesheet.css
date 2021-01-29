@@ -5,6 +5,7 @@ html {
 body {
     font-family: sans-serif;
     filter: invert(1) hue-rotate(180deg);
+    color: dimgray;
 }
 
 a {
@@ -27,7 +28,7 @@ input {
     padding: 2em;
     border-radius: 3em;
     border: thick solid silver;
-    border-bottom-color: black;
+    border-bottom-color: dimgray;
     animation: rotate 3s infinite;
 }
 
