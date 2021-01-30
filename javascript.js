@@ -68,7 +68,7 @@ const query = async podstate => {
         .replaceAll('metalist', 'select')
         .replaceAll('meta', 'option')
     pods.querySelectorAll('pod')
-        .forEach(node => node.innerHTML = `<h2>${node.title}</h2>` + node.innerHTML)
+        .forEach(node => node.innerHTML = `<h2> ${node.title} </h2>` + node.innerHTML)
     pods.querySelectorAll('option')
         .forEach(node => node.text = node.getAttribute('name'))
     pods.querySelectorAll('select')

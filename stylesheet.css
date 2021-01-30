@@ -1,12 +1,6 @@
-html {
-    background: black;
-}
-
 body {
-    font-family: sans-serif;
-    filter: invert(1) hue-rotate(180deg);
-    color: dimgray;
     line-height: 1.6em;
+    font-family: sans-serif;
 }
 
 a {
@@ -17,11 +11,18 @@ select {
     padding: .5em
 }
 
-input {
-    box-sizing: border-box;
+#input {
     width: 99%;
     padding: 1em;
+    box-sizing: border-box;
 }
+
+pod {
+    display: block;
+    padding-bottom: 2em;
+}
+
+/* animated loader icon */
 
 .loading {
     width: 0;
@@ -37,4 +38,12 @@ input {
     0% {
         transform: rotate(2turn);
     }
+}
+
+/* dark-theme toggle */
+
+.dark-theme {
+    color: dimgray;
+    background: black;
+    filter: invert(1) hue-rotate(180deg);
 }
