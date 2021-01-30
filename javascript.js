@@ -104,3 +104,11 @@ example.onchange = async _ => {
     pods.querySelector('a').remove()
     example.value = 'Examples'
 }
+
+checkbox.onclick = _ => {
+    body.classList.toggle('dark-theme')
+    localStorage.setItem('dark-theme',    body.classList.contains('dark-theme').toString())
+}
+
+if (localStorage.getItem('dark-theme') != body.classList.contains('dark-theme').toString())
+    checkbox.click()
