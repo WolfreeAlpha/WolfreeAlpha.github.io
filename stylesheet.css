@@ -22,6 +22,13 @@ pod {
     padding-bottom: 2em;
 }
 
+summary {
+    padding: 1em;
+    cursor: pointer;
+    border: solid thin;
+    margin-bottom: 1em;
+}
+
 /* animated loader icon */
 
 .loading {
