@@ -11,8 +11,8 @@
 - Open a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/proposing-changes-to-your-work-with-pull-requests) to submit a patch.
 
 #### Branching
-- `main` is the *development* branch where HEAD reflects an *unstable nightly* build.
-- `release` is the *production* branch where HEAD reflects a *stable deployment* build.
+- `main` is the *unstable development* branch for *daily* builds.
+- `release` is the *stable production* branch for *deployable* builds.
 
 #### Workflow
 - Every pull request spins up a disposable [Deploy Preview](https://app.netlify.com/sites/wolfreealpha/deploys).
