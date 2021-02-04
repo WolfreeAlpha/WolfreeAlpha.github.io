@@ -6,8 +6,18 @@
 - Facilitate the use of [Wolfram|Alpha Show Steps API](https://products.wolframalpha.com/show-steps-api/documentation/).
 
 #### Contributing
-- [OneFlow](https://www.endoflineblog.com/oneflow-a-git-branching-model-and-workflow#detailed-description)
-- [Previews](https://app.netlify.com/sites/wolfreealpha/deploys)
+- Start a [discussion](https://docs.github.com/en/discussions/collaborating-with-your-community-using-discussions/collaborating-with-maintainers-using-discussions) to ask questions and collaborate with maintainers.
+- Create an [issue](https://docs.github.com/en/github/managing-your-work-on-github/creating-an-issue) to request new features or report bugs.
+- Open a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/proposing-changes-to-your-work-with-pull-requests) to submit a patch.
+
+#### Branching
+- `main` is the *development* branch where HEAD reflects an *unstable nightly* build.
+- `release` is the *production* branch where HEAD reflects a *stable deployment* build.
+
+#### Workflow
+- Every pull request spins up a disposable [Deploy Preview](https://app.netlify.com/sites/wolfreealpha/deploys).
+- Maintainers merge `main` into `release` once it has acquired enough functionalities or fixes.
+- Github then deploys `release` to http://WolfreeAlpha.github.io automagically.
 
 #### License
 - [MIT License](https://github.com/WolfreeAlpha/WolfreeAlpha.github.io/blob/main/LICENSE)
