@@ -11,6 +11,10 @@ select {
     padding: .5em
 }
 
+form {
+    display: flex;
+}
+
 #input {
     width: 99%;
     padding: 1em;
