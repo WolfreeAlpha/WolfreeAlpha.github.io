@@ -1,0 +1,61 @@
+.darkmode {
+	color: dimgray;
+	background: black;
+	filter: invert(1) hue-rotate(180deg);
+}
+
+* {
+	line-height: 1.5em;
+	text-decoration: none;
+	font-family: sans-serif;
+}
+
+nav {
+	text-align: center;
+	white-space: nowrap;
+}
+
+form {
+	display: flex;
+	border: solid darkorange;
+}
+
+input, button {
+	padding: 1em;
+	border: none;
+	background: white;
+	line-height: 1em;
+	box-shadow: inset 0 0 1px 1em white;
+}
+
+form > input {
+	width: 99%;
+}
+
+form > button {
+	color: white;
+	background: darkorange;
+}
+
+select {
+	margin: 1em;
+	color: orangered;
+	background: white;
+	border-radius: .5em;
+	border: thin solid darkorange;
+}
+
+iframe {
+	width: 100%;
+	height: 100em;
+}
+
+header {
+	padding: .5em;
+	color: cadetblue;
+	background: whitesmoke;
+}
+
+img {
+	padding: .5em;
+}

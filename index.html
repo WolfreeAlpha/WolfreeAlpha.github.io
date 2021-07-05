@@ -1,79 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>WolfreeAlpha: FREE Wolfram|Alpha Step-by-Step Solutions</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css.css">
+		<meta name="description" content="How to show steps for FREE in Wolfram|Alpha? Get Wolfram Alpha Pro Features for Free. Use step-by-step calculators for chemistry, calculus, algebra, trigonometry, equation solving, basic math, and more. Gain more understanding of your homework with steps and hints guiding you from problems to answers! Wolfram|Alpha Pro Step-by-step solutions not only give you the answers you're looking for but also help you learn how to solve problems.">
+	</head>
+	<body>
+		<nav>
+			Get 100% FREE access to
+			<a href="https://www.wolframalpha.com/">Wolfram|Alpha</a>
+			Pro.
+			<br>
+			Unlock full
+			<a href="https://www.wolframalpha.com/examples/pro-features/step-by-step-solutions/">step-by-step</a>
+			solutions for everyone.
+			<h3>
+				Wol<a href="">free</a>Alpha.<a href="https://github.com/WolfreeAlpha/WolfreeAlpha.github.io">github</a>.io
+			</h3>
+		</nav>
 
-<head>
-    
-    <title>WolfreeAlpha: FREE Wolfram|Alpha Step-by-Step Solutions</title>
-    <meta name="description" content="How to show steps for FREE in Wolfram|Alpha? Get Wolfram Alpha Pro Features for Free. Use step-by-step calculators for chemistry, calculus, algebra, trigonometry, equation solving, basic math, and more. Gain more understanding of your homework with steps and hints guiding you from problems to answers! Wolfram|Alpha Pro Step-by-step solutions not only give you the answers you're looking for but also help you learn how to solve problems.">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="icon.png">
-    <link rel="stylesheet" href="stylesheet.css">
-    
-    <!-- Open Graph Protocol -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wolfreealpha.github.io/">
-    <meta property="og:title" content="WolfreeAlpha: FREE Wolfram|Alpha Step-by-Step Solutions">
-    <meta property="og:description" content="Get FREE access to Wolfram|Alpha Pro. Unlock full step-by-step solutions for everyone.">
-    <meta property="og:image" content="https://www.wolframalpha.com/_next/static/images/headerSmall_14ipXg3E.png">
-    
-    <!-- Twitter Cards -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="WolfreeAlpha: FREE Wolfram|Alpha Step-by-Step Solutions">
-    <meta property="twitter:description" content="Get FREE access to Wolfram|Alpha Pro. Unlock full step-by-step solutions for everyone.">
-    <meta property="twitter:image" content="https://www.wolframalpha.com/_next/static/images/headerSmall_14ipXg3E.png">
-    
-</head>
+		<form>
+			<input type="search" enterkeyhint="go" placeholder="Enter what you want to calculate">
+			<button>&nbsp;=&nbsp;</button>
+		</form>
 
-<body id="body">
-    
-    <header>
-        Get 100% FREE access to
-        <a href="https://www.wolframalpha.com/">Wolfram|Alpha</a>
-        Pro.
-        <br>
-        Unlock full
-        <a href="https://www.wolframalpha.com/examples/pro-features/step-by-step-solutions/">step-by-step</a>
-        solutions for everyone.
-    </header>
-    
-    <select id="example">
-        <option disabled selected>Examples</option>
-        <option> Arithmetic               </option>
-        <option> Algebra                  </option>
-        <option> Geometry                 </option>
-        <option> Statistics               </option>
-        <option> Calculus                 </option>
-        <option> Differential Equations   </option>
-        <option> Discrete Math            </option>
-        <option> Linear Algebra           </option>
-        <option> Proofs                   </option>
-        <option> Chemistry                </option>
-    </select>
-    
-    <label class="toggle">
-        <input id="checkbox" type="checkbox">
-    </label>
-    
-    <h3>
-        Wol<a href="">free</a>Alpha.<a href="https://github.com/WolfreeAlpha/WolfreeAlpha.github.io">github</a>.io
-    </h3>
-    
-    <form id="form">
-        <input type="search" id="input" enterkeyhint="go" placeholder="Enter what you want to calculate">
-        <input type="submit" value="   =   ">
-    </form>
-    
-    <div id="loading" hidden>
-        <br>
-        <div class="loading"> </div>
-        <h3>loading...</h3>
-    </div>
-    
-    <main id="pods"> </main>
-    
-    <script src="javascript.js"> </script>
-    
-</body>
+		<button onclick="body.classList.toggle('darkmode'),localStorage.setItem('body.className',body.className)">🔆</button>
 
+		<select>
+			<option disabled="" selected="">Examples</option>
+			<option> Arithmetic               </option>
+			<option> Algebra                  </option>
+			<option> Geometry                 </option>
+			<option> Statistics               </option>
+			<option> Calculus                 </option>
+			<option> Differential Equations   </option>
+			<option> Discrete Math            </option>
+			<option> Linear Algebra           </option>
+			<option> Proofs                   </option>
+			<option> Chemistry                </option>
+		</select>
+
+		<main></main>
+
+		<script src="js.js"></script>
+	</body>
 </html>
