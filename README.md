@@ -5,6 +5,9 @@
 - Unlock FREE access to full [Wolfram|Alpha Step-by-Step Solutions](https://www.wolframalpha.com/examples/pro-features/step-by-step-solutions/).
 - Facilitate the use of [Wolfram|Alpha Show Steps API](https://products.wolframalpha.com/show-steps-api/documentation/).
 
+#### 30 second demo video
+https://user-images.githubusercontent.com/35728132/124412317-cecc9b00-dd80-11eb-98bd-77b8b0ee50ce.mp4
+
 #### Contributing
 - Start a [discussion](https://docs.github.com/en/discussions/collaborating-with-your-community-using-discussions/collaborating-with-maintainers-using-discussions) to ask questions and collaborate with maintainers.
 - Create an [issue](https://docs.github.com/en/github/managing-your-work-on-github/creating-an-issue) to request new features or report bugs.
