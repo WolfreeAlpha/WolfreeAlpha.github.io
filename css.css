@@ -38,6 +38,12 @@ form > input {
 }
 form > input:focus {outline: none;}
 
+input[type="search"]::-webkit-search-cancel-button {
+	cursor: pointer;
+	right: 35px;
+	position: relative;
+}
+
 form > button {
 	color: white;
 	background: #ff6c00;
