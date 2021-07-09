@@ -75,14 +75,22 @@ const query = async podstate => {
 						main.innerHTML += state.states.reduce(
 							(names, state) => names + '<option>' + state.name,
 							'<select onchange=query(this.value)>' + '<option>' + state.value
-						) + '</select><br>'
+						)
 					}
 
 				}
 			)
-			main.innerHTML += pod.subpods?.map(
-				subpod => `<img src=${subpod.img?.src}>`
-			).join('<br>')
+			pod.subpods?.forEach(
+				subpod => {
+					main.innerHTML += `
+						<details>
+							<summary></summary>
+							<pre>${subpod.plaintext}</pre>
+						</details>
+						<img src=${subpod.img?.src}>
+					`
+				}
+			)
 		}
 	)
 }
