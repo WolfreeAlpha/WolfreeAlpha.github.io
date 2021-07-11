@@ -1,8 +1,9 @@
 .darkmode {
 	color: dimgray;
 	background: black;
-	filter: invert(1) hue-rotate(180deg);
 }
+
+.darkmode img { filter: invert(1) hue-rotate(180deg); }
 
 * {
 	line-height: 1.5em;
@@ -13,14 +14,15 @@
 nav {
 	text-align: center;
 	white-space: nowrap;
+	color: rgb(155, 155, 155);
 }
 
 form {
 	display: flex;
-	border: solid darkorange;
+	cursor: text;
 }
 
-input, button {
+input {
 	padding: 1em;
 	border: none;
 	background: white;
@@ -29,20 +31,38 @@ input, button {
 }
 
 form > input {
-	width: 99%;
+	width: 99%; 
+	border: 2px solid #ff6c00;
+	box-shadow: 0 0 0 3px #ffc230; 
+	border-radius: 5px;
+}
+form > input:focus {outline: none;}
+
+input[type="search"]::-webkit-search-cancel-button {
+	cursor: pointer;
+	right: 35px;
+	position: relative;
 }
 
 form > button {
 	color: white;
-	background: darkorange;
+	background: #ff6c00;
+	cursor: pointer; 
+	border: none;
+	position: relative;
+	right: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	font-weight: bold;
 }
 
 select {
-	margin: 1em;
-	color: orangered;
+	margin: 0.4em;
+	color: #ff6c00;
 	background: white;
 	border-radius: .5em;
-	border: thin solid darkorange;
+	border: thin solid #ff6c00;
 }
 
 iframe {
@@ -52,10 +72,53 @@ iframe {
 
 header {
 	padding: .5em;
-	color: cadetblue;
-	background: whitesmoke;
+	color: white;
+	background: #ff6c00;
 }
 
 img {
 	padding: .5em;
 }
+
+html {
+	background-color: #ffc230;
+}
+
+body {
+	margin: 2%;
+	padding: 1%;
+	background-color: #ffffff;
+	border: 4px solid #ff6c00;
+	border-radius: 10px;
+}
+
+main {
+	margin: 3%;
+}
+
+h3 {
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+	color: red;
+}
+
+a {
+	color: #ff6c00; 
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+	text-decoration: underline;	
+	text-decoration-thickness: 2px;
+}
+
+a:hover, #dark-button:hover {
+	color: black;
+}
+.darkmode a:hover { color: white }
+
+#dark-button {
+	font-size: 25px;
+	color: #ff6c00;
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+.darkmode #dark-button { color: white }
+.darkmode #dark-button:hover { color: #ff6c00 }
